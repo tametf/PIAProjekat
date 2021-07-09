@@ -1,0 +1,80 @@
+
+#top {
+    position: relative;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+#bottom {
+    position: inherit;
+    background-color: green;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: green;
+    padding: 5px;
+    width: 150px;
+    height: 80%;
+}
+
+#right {
+    float: right;
+    background-color: green;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    background-color: green;
+    padding: 5px;
+    height: 300px;
+}
+
+.left_content {
+    background-color: green;
+    padding: 5px;
+    margin-left: 170px;
+    height: 80%;
+    
+}
+
+.right_content {
+    background-color: green;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+    height:80%;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+#slika {
+    background-image: url('dobro-dosli1.jpg');
+}
+
+#l
+{
+  float: left;
+  width: 64%;
+}
+
+#r
+{
+  float: right;
+  width: 35%;
+}
+

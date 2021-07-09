@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2020, 10:56:56 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="projekat" name="beans.Poljoprivrednik" optimistic-lock="version" table="poljoprivrednik">
+    <id name="korisnickoImePolj" type="string">
+      <column length="45" name="korisnickoImePolj"/>
+      <generator class="foreign">
+        <param name="property">korisnik</param>
+      </generator>
+    </id>
+    <one-to-one class="beans.Korisnik" constrained="true" name="korisnik"/>
+    <property name="ime" type="string">
+      <column length="45" name="ime" not-null="true"/>
+    </property>
+    <property name="prezime" type="string">
+      <column length="45" name="prezime" not-null="true"/>
+    </property>
+    <property name="datumRodjenja" type="date">
+      <column length="10" name="datumRodjenja" not-null="true"/>
+    </property>
+    <property name="telefon" type="string">
+      <column length="45" name="telefon" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="45" name="email" not-null="true"/>
+    </property>
+    <property name="mestoRodjenja" type="string">
+      <column length="45" name="mestoRodjenja" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="rasadniks" table="rasadnik">
+      <key>
+        <column length="45" name="korisnickoImePolj" not-null="true"/>
+      </key>
+      <one-to-many class="beans.Rasadnik"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="detaljis" table="detalji">
+      <key>
+        <column length="45" name="korisnickoImePolj" not-null="true"/>
+      </key>
+      <one-to-many class="beans.Detalji"/>
+    </set>
+  </class>
+</hibernate-mapping>

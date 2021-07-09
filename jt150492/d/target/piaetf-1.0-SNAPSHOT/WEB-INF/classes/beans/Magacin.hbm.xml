@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2020, 10:56:56 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="beans.Magacin" table="magacin" catalog="projekat" optimistic-lock="version">
+        <id name="idMagacina" type="int">
+            <column name="idMagacina" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="onlineprodavnica" class="beans.Onlineprodavnica" fetch="select">
+            <column name="idProdavnice" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rasadnik" class="beans.Rasadnik" fetch="select">
+            <column name="idRasadnika" not-null="true" />
+        </many-to-one>
+        <property name="kolicina" type="int">
+            <column name="kolicina" not-null="true" />
+        </property>
+        <set name="sadnicezasadjenes" table="sadnicezasadjene" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMagacina" not-null="true" />
+            </key>
+            <one-to-many class="beans.Sadnicezasadjene" />
+        </set>
+    </class>
+</hibernate-mapping>

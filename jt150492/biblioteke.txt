@@ -1,0 +1,29 @@
+
+1.hibernate-entitymanager-4.3.1.Final.jar
+
+groupId: org.hibernate
+artifactId: hibernate-entitymanager
+version: 4.3.1 Final
+
+2.hibernate-jpa-2.1-api-1.0.0.Final.jar
+
+groupId: org.hibernate.javax.persistence
+artifactId: hibernate-jpa-2.1-api
+version: 1.0.0
+
+
+3. javaee-api-8.0.jar
+groupId: javax
+artifactId: javaee-api
+version: 8.0
+
+
+4.mysql-connector-java-8.0.20.jar
+groupId: mysql
+artifactId: mysql-connector-java
+version: 8.0.20
+
+5.primefaces-6.2.jar
+groupId: org.primefaces
+artifactId: primefaces
+version: 6.2

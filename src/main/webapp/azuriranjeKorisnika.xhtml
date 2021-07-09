@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templates/glavni.xhtml">
+
+            <ui:define name="top">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+              <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                     <h:commandButton value="Nazad" action="azuriranjeAdmin" style="float: right"></h:commandButton>
+                     <br/>
+                     <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form> 
+                    <h:outputText value="Stara lozinka:" style="color:white"></h:outputText>
+                    <h:outputText value="#{adminController.korisnikAzuriraj.lozinka}" style="color:white"></h:outputText>
+                    <br/>
+                    <h:outputText value="Nova lozinka:" style="color:white"></h:outputText>
+                    <h:inputText value="#{adminController.korisnikAzuriraj.lozinka}"></h:inputText>
+                    <br/>
+                    <h:outputText value="Stari status:"  style="color:white"></h:outputText>
+                    <h:outputText value="#{adminController.korisnikAzuriraj.status}" style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novi status:"  style="color:white"></h:outputText>
+                    <h:inputText value="#{adminController.korisnikAzuriraj.status}"></h:inputText>
+                    <br/>
+                    
+                    <h:outputText value="Staro prezime:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:outputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.prezime}"  style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novo prezime:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:inputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.prezime}"></h:inputText>
+                    <br/>   
+                 
+                    <h:outputText value="Stari telefon:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:outputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.telefon}" style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novi telefon:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:inputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.telefon}"></h:inputText>
+                    <br/>   
+                    
+                    <h:outputText value="Stari mejl:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:outputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.email}" style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novi mejl:" rendered="#{adminController.jestePolj}" style="color:white"></h:outputText>
+                    <h:inputText rendered="#{adminController.jestePolj}" value="#{adminController.korisnikAzuriraj.poljoprivrednik.email}"></h:inputText>
+                    <br/>   
+                   
+                    <h:outputText value="Staro mesto:" rendered="#{adminController.jestePred}" style="color:white"></h:outputText>
+                    <h:outputText rendered="#{adminController.jestePred}" value="#{adminController.korisnikAzuriraj.preduzece.mesto}" style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novo mesto:" rendered="#{adminController.jestePred}" style="color:white"></h:outputText>
+                    <h:inputText rendered="#{adminController.jestePred}" value="#{adminController.korisnikAzuriraj.preduzece.mesto}"></h:inputText>
+                    <br/>   
+                   
+                    <h:outputText value="Stari mejl" rendered="#{adminController.jestePred}" style="color:white"></h:outputText>
+                     <h:outputText rendered="#{adminController.jestePred}" value="#{adminController.korisnikAzuriraj.preduzece.email}" style="color:white"></h:outputText>
+                    <br/>   
+                    <h:outputText value="Novi mejl" rendered="#{adminController.jestePred}" style="color:white"></h:outputText>
+                   <h:inputText rendered="#{adminController.jestePred}" value="#{adminController.korisnikAzuriraj.preduzece.email}"></h:inputText>
+                    <br/>   
+                    <h:outputText value="Staro mesto" rendered="#{adminController.jestePred}" style="color:white"></h:outputText>
+                    <h:outputText rendered="#{adminController.jestePred}" value="#{adminController.korisnikAzuriraj.preduzece.mesto}" style="color:white"></h:outputText>
+                    <br/>   
+                    
+                    <br/>
+                   
+                    
+                    <h:commandButton value="Potvrdi" action="#{adminController.potvrdiAzuriranje()}"></h:commandButton>
+                    
+                </h:form>
+            </ui:define>
+
+       <ui:define name="bottom">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; font-size:large; float:right; font-weight: bold"></h:outputText>
+              <br/>
+              <br/>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

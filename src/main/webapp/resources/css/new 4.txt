@@ -1,0 +1,45 @@
+Leksička analiza:
+	-'''
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	$2b$10$WLt1x3WzRm4R0DY7Jpr/kO0uAFA41MP7NguISqnE3vFiosMMpBuOi
+	$2b$10$WLt1x3WzRm4R0DY7Jpr/kO0uAFA41MP7NguISqnE3vFiosMMpBuOi
+	$2b$10$WLt1x3WzRm4R0DY7Jpr/kO0uAFA41MP7NguISqnE3vFiosMMpBuOi
+	
+	
+	$2b$10$ZyzVKQk9wJsk6LLQPaYrveFsP3vGDtmgKgn5Eh4VH7oK6ht4y9uAq
+	$2b$10$ZyzVKQk9wJsk6LLQPaYrveFsP3vGDtmgKgn5Eh4VH7oK6ht4y9uAq
+	
+	
+  
+  da podelimo featcher-e na frontendu
+  od pocetka sve Ani da objasnimo
+  za sta je aplikacija
+  i neke funkcionalnosti da ona stekne utisak sta smo pravili
+  i posle jedno po jedno da preuzima
+  moze app koju je on deploy-ovao
+  za sad-ne radi video chat za vise usera
+  email smo namestili, nesto nije radilo i to je to otprilike
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  intervju
+  do 40ak min 
+  nedelja 12:45
+  ana nikolic
+  bground check
+  engleski 

@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/glavni.xhtml">
+
+            <ui:define name="top">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                     <h:commandButton value="Nazad" action="admin" style="float: right"></h:commandButton>
+                     <br/>
+                     <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+                <div style="color: white">
+                Desno se nalaze svi korisnici,
+                poljoprivrednici i proizvodjaci
+                <br/>
+                <br/>
+                Odaberite korisnika cije podatke zelite da promenite,
+                pritiskom na dugme *Azuriraj*
+                <br/>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                <h:outputText value="Nema korisnika" rendered="#{empty adminController.korisniciA}"></h:outputText>
+          
+                <h:dataTable value="#{adminController.korisniciA}" var="kor" rendered="#{not empty adminController.korisniciA}" style="color:white">
+                   
+                    <h:column>
+                        <f:facet name="header">Korisnicko ime</f:facet>
+                        <h:outputText value="#{kor.korisnickoIme}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Lozinka</f:facet>
+                        <h:outputText value="#{kor.lozinka}"></h:outputText>
+                    </h:column>
+                    
+                    
+                    <h:column>
+                        <f:facet name="header">Ime</f:facet>
+                        <h:outputText value="#{kor.poljoprivrednik.ime}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Prezime</f:facet>
+                        <h:outputText value="#{kor.poljoprivrednik.prezime}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Naziv</f:facet>
+                        <h:outputText value="#{kor.preduzece.naziv}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Mesto</f:facet>
+                        <h:outputText value="#{kor.preduzece.mesto}"></h:outputText>
+                    </h:column>
+                    
+                   
+                   <h:column>
+                      <f:facet name="header"></f:facet>
+                      <h:commandButton value="Azuriraj" action="#{adminController.azuriraj(kor)}"></h:commandButton>
+                   </h:column>
+                </h:dataTable>
+            </h:form>
+            </ui:define>
+             <ui:define name="bottom">
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; font-size: large; float:right; font-weight: bold"></h:outputText>
+              <br/>
+              <br/>
+            </ui:define>
+          
+        </ui:composition>
+
+           
+    </body>
+</html>

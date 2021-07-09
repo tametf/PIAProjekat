@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/glavni.xhtml">
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+            <ui:define name="top">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+                <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                      <h:commandButton value="Nazad" action="preduzetnik" style="float: right"></h:commandButton>
+                     <br/>
+                     <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+                <h:form>
+                    <h:commandButton value="Dodajte novi proizvod" action="dodavanjeProizvoda"></h:commandButton>
+                    
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+                <h:form>
+                    <h:outputText value="Nema proizvoda" rendered="#{empty preduzetnikController.proizvodiPreduzeca}"></h:outputText>
+                    <h:dataTable value="#{preduzetnikController.proizvodiPreduzeca}" var="proizvod" rendered="#{not empty preduzetnikController.proizvodiPreduzeca}">
+                        Svi proizvodi preduzeca:
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Naziv proizvoda" style="color:white"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{proizvod.naziv}" style="color:white"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                            <h:outputText value="Proizvodjac" style="color:white"></h:outputText></f:facet>
+                            <h:outputText value="#{proizvod.preduzece.korisnickoImePred}" style="color:white"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Kolicina na stanju" style="color:white"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{proizvod.kolicina}" style="color:white"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                            <h:commandButton value="Detaljnije" action="#{preduzetnikController.detaljiOPr(proizvod)}"></h:commandButton>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                            <h:commandButton value="Povuci proizvod" action="#{preduzetnikController.povuciProizvod(proizvod)}"></h:commandButton>
+                        </h:column>         
+                    </h:dataTable>
+                </h:form>    
+            </ui:define>
+             <ui:define name="bottom">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!" style="color: white; float:right; font-weight: bold; font-size: large"></h:outputText>
+               <br/>
+               <br/>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

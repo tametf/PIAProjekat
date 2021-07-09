@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="./templates/glavni.xhtml">
+
+
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <ui:define name="top">
+                
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                 <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                      <h:commandButton value="Nazad" action="proizvodiPreduzeca" style="float: right"></h:commandButton>
+                  <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+               
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </ui:define>
+
+            
+            
+            <ui:define name="content">
+            
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:form>
+                   <h3 style="color:white">Dodavanje proizvoda</h3>  
+                    <p:steps activeIndex="#{preduzetnikController.activeIndexS}">     
+                    </p:steps>  
+                    <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==0}">
+                        Naziv: <h:inputText value="#{preduzetnikController.nazivNovogProizvoda}"></h:inputText>
+                        <p:commandButton value="Dalje" action="#{preduzetnikController.activeIndexNext()}" update="@form"></p:commandButton>
+                    </p:panel>
+                     <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==1}">
+                         Kolicina: <h:inputText value="#{preduzetnikController.kolicinaNovogProizvoda}"></h:inputText>
+                        <p:commandButton value="Dalje" action="#{preduzetnikController.activeIndexNext()}" update="@form"></p:commandButton>
+                    </p:panel>
+                     <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==2}">
+                         Tip:
+                         
+                         <h:selectOneListbox value="#{preduzetnikController.tipNovogProizvoda}">
+                            <f:selectItem itemLabel="Sadnica" itemValue="sadnica"></f:selectItem>
+                            <f:selectItem itemLabel="Preparat" itemValue="preparat"></f:selectItem>
+                        </h:selectOneListbox>
+                         
+                        <p:commandButton value="Dalje" action="#{preduzetnikController.activeIndexNext()}" update="@form"></p:commandButton>
+                    </p:panel>
+                     <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==3}">
+                         Uputstvo(SAMO ZA PREPARAT): <h:inputText value="#{preduzetnikController.uputstvoNovogProizvoda}"></h:inputText>
+                        <p:commandButton value="Dalje" action="#{preduzetnikController.activeIndexNext()}" update="@form"></p:commandButton>
+                    </p:panel>
+                     <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==4}">
+                         Cena: <h:inputText value="#{preduzetnikController.cenaNovogProizvoda}"></h:inputText>
+                        <p:commandButton value="Dalje" action="#{preduzetnikController.activeIndexNext()}" update="@form"></p:commandButton>
+                    </p:panel>
+                    <p:panel style="margin-top: -40%" rendered="#{preduzetnikController.activeIndexS==5}">
+                        <p:outputLabel rendered="#{preduzetnikController.greska}" value="MORATE POPUNITI SVA POLJA!"></p:outputLabel>
+                        <p:commandButton rendered="#{preduzetnikController.greska}" value="Opet!" action="#{preduzetnikController.activeIndexStart()}" update="@form"></p:commandButton>
+                        <p:commandButton value="Potvrdi" rendered="#{!preduzetnikController.greska}" action="#{preduzetnikController.dodajProizvod()}" update="@form"></p:commandButton>
+                        
+                        <p:commandButton value="Odustani" rendered="#{!preduzetnikController.greska}" action="#{preduzetnikController.activeIndexStart()}" update="@form"></p:commandButton>
+                    </p:panel>
+                    <p:outputLabel value="#{preduzetnikController.porukaUspeh}" style="color:white;font-size: large"></p:outputLabel>
+                </h:form>
+                    
+               
+                </ui:define>
+
+            <ui:define name="bottom">
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:outputText value="Hvala sto koristite nase usluge!" style="color: white; float:right; font-weight: bold; font-size: large">
+                    
+              </h:outputText>
+              <br/>
+              <br/>
+            </ui:define>
+
+        </ui:composition>
+

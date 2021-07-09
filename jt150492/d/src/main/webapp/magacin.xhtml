@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="./templates/glavni.xhtml">
+
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <ui:define name="top">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                     <h:commandButton value="Nazad" action="#{rasadnikController.nazadMagacinSadnice()}" style="float: right"></h:commandButton>
+                     <br/>
+                     <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                  
+            </ui:define>
+
+            <ui:define name="content">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    
+                   
+                    <h:outputText rendered="#{empty rasadnikController.sviProizvodi}" value="Nemate nijedan proizvod u magacinu" style="color:white; font-size:large; font-weight: bold"></h:outputText>
+                    <h:form rendered="#{empty rasadnikController.sviProizvodi}">
+                         <h:outputText style="font-size: large; font-weight: bold; color:white" rendered="#{not empty rasadnikController.narudzbineM}" value="Narudzbine u magacinu:"></h:outputText>
+                     <h:dataTable value="#{rasadnikController.narudzbineM}" var="narudzbine" rendered="#{not empty rasadnikController.narudzbineM}">
+                         
+                        <h:column>
+                            <f:facet name="header">
+                            <p:outputLabel value="Naziv proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.nazivProizvoda}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                            <p:outputLabel value="Tip proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.tipProizvoda}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="Preduzece" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.preduzece}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                         <h:column>
+                             <f:facet name="header">
+                                 <p:outputLabel value="Status" style="color:white; font-size:large"></p:outputLabel>
+                             </f:facet>
+                             <p:outputLabel value="#{narudzbine.status}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                           <h:commandButton value = "Obrisi narudzbinu" action="#{rasadnikController.otkaziNarudzbinu(narudzbine)}"></h:commandButton>
+                       
+                        </h:column>
+                       
+                    </h:dataTable>
+                    </h:form>
+                    
+                    <h:form rendered="#{ not empty rasadnikController.sviProizvodi}">
+                    <h2 style="color:white">                                    Proizvodi</h2>
+                       
+                        <p:dataTable value="#{rasadnikController.sviProizvodi}" var="proizvodi">
+                        <p:column> 
+                            <f:facet name="header">
+                                <p:outputLabel value="Naziv proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                             #{proizvodi.nazivProizvoda}
+                        </p:column>
+                        <p:column> 
+                            <f:facet name="header">
+                                <p:outputLabel value="Tip proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                             #{proizvodi.tipProizvoda}
+                        </p:column>
+                        <p:column> 
+                            <f:facet name="header">
+                                <p:outputLabel value="Naziv proizvodjaca" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                             #{proizvodi.nazivProizvodjaca}
+                        </p:column>
+                        <p:column> 
+                            <f:facet name="header">
+                                <p:outputLabel value="Kolicina" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                             #{proizvodi.kolicina}
+                        </p:column>
+                     </p:dataTable>
+                    <br/>
+                    <br/>
+                    <h:commandButton value="Sortiraj po nazivu" action="#{rasadnikController.sortirajPoNazivu()}"></h:commandButton>
+                    <h:outputText value=" "></h:outputText>
+                    <h:commandButton value="Sortiraj po proizvodjacu" action="#{rasadnikController.sortirajPoProizvodjacu()}"></h:commandButton>
+                    <h:outputText value=" "></h:outputText>
+                    <h:commandButton value="Sortiraj po kolicini" action="#{rasadnikController.sortirajPoKolicini()}"></h:commandButton>
+                    <h:outputText value=" "></h:outputText>
+                    <h:commandButton value="Prikazi sve proizvode" action="#{rasadnikController.prikaziSveProizvode()}"></h:commandButton>
+                    <h:outputText value=" "></h:outputText>
+                    
+                    <h:panelGrid columns="3">
+                    <p:outputLabel value="Filtriraj po nazivu:" style="color:white; font-size:large"></p:outputLabel>
+                    <h:inputText value="#{rasadnikController.filtrirajNaziv}"></h:inputText>
+                    <h:commandButton value="Potvrdi" action="#{rasadnikController.filtrirajPoNazivu()}"></h:commandButton>
+                    <p:outputLabel value="Filtriraj po proizvodjacu:" style="color:white; font-size:large"></p:outputLabel>
+                    <h:inputText value="#{rasadnikController.filtrirajProizvodjac}"></h:inputText>
+                    <h:commandButton value="Potvrdi" action="#{rasadnikController.filtrirajPoProizvodjacu()}"></h:commandButton>
+                    <p:outputLabel value="Filtriraj po kolicini:" style="color:white; font-size:large"></p:outputLabel>
+                    <h:inputText value="#{rasadnikController.filtrirajKolicina}"></h:inputText>
+                    <h:commandButton value="Potvrdi" action="#{rasadnikController.filtrirajPoKolicini()}"></h:commandButton>
+                    </h:panelGrid>   
+                    <br/>
+                    <br/>
+                    <h:outputText style="font-size: large; color:white" rendered="#{empty rasadnikController.narudzbineM}" value="Nema narudzbina koje mozete otkazati"></h:outputText>
+                    
+                     <h:outputText style="font-size: large; font-weight: bold; color:white" rendered="#{not empty rasadnikController.narudzbineM}" value="Narudzbine u magacinu:"></h:outputText>
+                     <h:dataTable value="#{rasadnikController.narudzbineM}" var="narudzbine" rendered="#{not empty rasadnikController.narudzbineM}">
+                         
+                        <h:column>
+                            <f:facet name="header">
+                            <p:outputLabel value="Naziv proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.nazivProizvoda}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                            <p:outputLabel value="Tip proizvoda" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.tipProizvoda}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="Preduzece" style="color:white; font-size:large"></p:outputLabel>
+                            </f:facet>
+                            <p:outputLabel value="#{narudzbine.preduzece}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                         <h:column>
+                             <f:facet name="header">
+                                 <p:outputLabel value="Status" style="color:white; font-size:large"></p:outputLabel>
+                             </f:facet>
+                             <p:outputLabel value="#{narudzbine.status}" style="color:white; font-size:large"></p:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                           <h:commandButton value = "Obrisi narudzbinu" action="#{rasadnikController.otkaziNarudzbinu(narudzbine)}"></h:commandButton>
+                       
+                        </h:column>
+                       
+                    </h:dataTable>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; float:right; font-weight: bold"></h:outputText>
+              <br/>
+            </ui:define>
+
+        </ui:composition>

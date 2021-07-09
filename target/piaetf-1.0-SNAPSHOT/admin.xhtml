@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templates/glavni.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    
+    <ui:define name="top">
+        <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                       
+                    <br/>
+                    <br/>
+                </h:form>
+    </ui:define>
+    
+    <ui:define name="left">
+        <h:form>
+            <h:commandButton value="Promena lozinke" action="promenaLozinke"></h:commandButton>
+            <br/>
+            <br/>
+            <br/>
+            <h1 style="color: white">Akcija sa korisnicima:</h1> <br/>
+            <h:commandButton value = "Dodaj" action = "#{adminController.dodavanjeAdmin()}"></h:commandButton> <br/>
+            <h:commandButton value = "Brisi" action = "#{adminController.brisi()}"></h:commandButton> <br/> 
+            <h:commandButton value = "Azuriraj" action = "#{adminController.azuriraj()}"></h:commandButton> <br/> 
+        </h:form>
+    </ui:define>
+    
+    
+    
+    <ui:define name="content">
+        <h:form>
+            <h:outputText value = "Nema korisnika u sistemu" rendered = "#{empty adminController.korisnici}"></h:outputText>
+            <p:dataTable value="#{adminController.korisnici}" var="korisnik" rendered="#{not empty adminController.korisnici}" >
+                <p:column>
+                    <f:facet name="header">Korisnicko ime</f:facet>
+                    #{korisnik.korisnickoIme}
+                </p:column>
+                <p:column>
+                    <f:facet name = "header">Lozinka</f:facet>
+                    #{korisnik.lozinka}
+                </p:column>
+                <p:column>
+                    <f:facet name = "header">Tip</f:facet>
+                    #{korisnik.tip}
+                </p:column>
+                <p:column>
+                    <h:commandButton action = "#{adminController.prihvatiKorisnika(korisnik)}" value = "Prihvati"></h:commandButton>
+                </p:column>
+                <p:column>
+                    <h:commandButton style="background-position: center" action = "#{adminController.odbijKorisnika(korisnik)}" value = "Odbij"></h:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+       
+    </ui:define>
+            
+            <ui:define name="bottom">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; font-size: large; float:right; font-weight: bold"></h:outputText>
+              <br/>
+              <br/>
+            </ui:define>
+
+</ui:composition>

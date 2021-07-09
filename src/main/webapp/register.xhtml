@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templates/glavni.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    
+    
+    <ui:define name="top">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+        <h:form>
+            <h:commandButton value="Nazad" action="index" style="float:right"></h:commandButton>
+            <br/>
+            <br/>
+        </h:form>
+    </ui:define>
+    <ui:define name="left">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+        <h:outputText style="font-weight: bold; color:white" value="Desno se mozete registrovati kao poljoprivrednik odnosno mozete registrovati svoje preduzece."></h:outputText>
+             <br/><br/>
+             <h:outputText style="font-weight: bold; color:white" value="Nakon toga se mozete uveriti u brojne pogodnosti koriscenja naseg sajta."></h:outputText>
+            <br/><br/>
+            <h:outputText style="font-weight: bold; color:white" value="SADIMO ZAJEDNO!"></h:outputText>
+            
+        </ui:define>
+        
+    <ui:define name="content">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:form>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <h3 style="margin-left: 10%; color: white; margin-top:5%">Registracija poljoprivrednika</h3>
+            <h:panelGrid columns="3" style="float: left; margin-left: 10%; color:white">
+                Ime:
+                <h:inputText id = "ime" value = "#{registrationController.ime}" required = "true" requiredMessage="Morate uneti ime"></h:inputText>
+                <h:message for="ime" style = "color: white"></h:message>
+                Prezime:
+                <h:inputText id = "prezime" value = "#{registrationController.prezime}" required="true" requiredMessage="Morate uneti prezime"></h:inputText>
+                <h:message for="prezime" style = "color:white"></h:message>
+                Korisnicko ime:
+                <h:inputText id = "korisnickoIme" value = "#{registrationController.korisnickoIme}" required="true" requiredMessage="Morate uneti korisnicko ime"></h:inputText>
+                <h:message for="korisnickoIme" style = "color:white"></h:message>
+                Lozinka:
+                <h:inputSecret id = "lozinka" value = "#{registrationController.lozinka}" required="true" requiredMessage="Morate uneti lozinku" validatorMessage="Morate uneti ispravno lozinku">
+                       <f:validateRegex pattern = "^((?=.*[A-Z])(?=.*[a-z])(?=.*\W)(?=.*\d).{7,})$"></f:validateRegex>
+                </h:inputSecret>
+                <h:message for = "lozinka" style = "color:white"></h:message>
+                Potvrda lozinke:
+                <h:inputSecret id = "potvrdaLozinke" value = "#{registrationController.potvrdaLozinke}" required="true" requiredMessage="Morate potvrditi lozinku"></h:inputSecret>
+                <h:message for = "potvrdaLozinke" style = "color:white"></h:message>
+                Datum rodjenja:
+                <h:inputText id = "datum" value = "#{registrationController.datumRodjenja}" required="true" requiredMessage="Morate uneti datum" converterMessage="Morate uneti datum u sledecem formatu: 'dan.mesec.godina. sati:minuti' sa pocetnim nulama">
+                <f:convertDateTime pattern = "dd.MM.yyyy."></f:convertDateTime>
+                </h:inputText>
+                <h:message for = "datum" style="color:white"></h:message>
+                Kontakt telefon:
+                <h:inputText id = "telefon" value = "#{registrationController.telefon}" required="true" requiredMessage="Morate uneti broj telefona"></h:inputText>
+                <h:message for="telefon" style = "color:white"></h:message>
+                 Email:
+                <h:inputText id = "email" value = "#{registrationController.email}" required="true" requiredMessage="Morate uneti email" validatorMessage="Morate uneti email u ispravnom formatu">
+                    <f:validateRegex pattern="^\w+@\w+\.\w+$"></f:validateRegex>
+                </h:inputText>
+                <h:message for="email" style = "color:white"></h:message>
+                Mesto rodjenja:
+                <h:inputText id = "mestoRodjenja" value = "#{registrationController.mestoRodjenja}" required="true" requiredMessage="Morate uneti mesto rodjenja"></h:inputText>
+                <h:message for="mestoRodjenja" style = "color:white"></h:message>
+                <h:outputText value=""></h:outputText>
+                <h:commandButton action="#{registrationController.registrujSe()}" value="REGISTRACIJA"></h:commandButton>
+                <h:outputText value=""></h:outputText>
+                <h:outputText value=""></h:outputText>
+                <h:outputText value = "#{registrationController.poruka}" style = "color:white; font-size: large"></h:outputText>
+                <h:outputText value=""></h:outputText>
+                
+                <h:outputText value=""></h:outputText>
+                <h:outputText value=""></h:outputText>
+                
+            </h:panelGrid>
+            
+        </h:form>   
+   
+        <h:form>
+                 <h3 style="color:white">Registracija preduzeca </h3>
+                 <h:panelGrid columns="3" style="color:white">
+                Naziv preduzeca:
+                <h:inputText id = "naziv" value = "#{registrationController.naziv}" required = "true" requiredMessage="Morate uneti naziv"></h:inputText>
+                <h:message for="naziv" style = "color: white"></h:message>
+                Skraceni naziv preduzeca:
+                <h:inputText id = "skraceniNaziv" value = "#{registrationController.skraceniNaziv}" required="true" requiredMessage="Morate uneti skraceni naziv"></h:inputText>
+                <h:message for="skraceniNaziv" style = "color:white"></h:message>
+                Lozinka:
+                <h:inputSecret id = "lozinkaPreduzece" value = "#{registrationController.lozinkaPreduzece}" required="true" requiredMessage="Morate uneti lozinku" validatorMessage="Morate uneti ispravno lozinku">
+                       <f:validateRegex pattern = "^((?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,})$"></f:validateRegex>
+                </h:inputSecret>
+                <h:message for = "lozinkaPreduzece" style = "color:white"></h:message>
+                Potvrda lozinke:
+                <h:inputSecret id = "potvrdaLozinkePreduzece" value = "#{registrationController.potvrdaLozinkePreduzece}" required="true" requiredMessage="Morate potvrditi lozinku"></h:inputSecret>
+                <h:message for = "potvrdaLozinkePreduzece" style = "color:white"></h:message>
+                Datum osnivanja:
+                <h:inputText id = "datumOsnivanja" value = "#{registrationController.datumOsnivanja}" required="true" requiredMessage="Morate uneti datum" converterMessage="Morate uneti datum u sledecem formatu: 'dan.mesec.godina. sati:minuti' sa pocetnim nulama">
+                <f:convertDateTime pattern = "dd.MM.yyyy."></f:convertDateTime>
+                </h:inputText>
+                <h:message for = "datumOsnivanja" style="color:white"></h:message>
+                Mesto osnivanja:
+                <h:inputText id = "mestoOsnivanja" value = "#{registrationController.mestoOsnivanja}" required="true" requiredMessage="Morate uneti mesto osnivanja"></h:inputText>
+                <h:message for="mestoOsnivanja" style = "color:white"></h:message>
+                Email:
+                <h:inputText id = "emailPreduzeca" value = "#{registrationController.emailPreduzece}" required="true" requiredMessage="Morate uneti email" validatorMessage="Morate uneti email u ispravnom formatu">
+                    <f:validateRegex pattern="^\w+@\w+\.\w+$"></f:validateRegex>
+                </h:inputText>
+                <h:message for="emailPreduzeca" style = "color:white"></h:message>
+                <h:outputText value=""></h:outputText>
+                <h:commandButton action="#{registrationController.registrujSePreduzece()}" value="REGISTRACIJA"></h:commandButton>
+                <h:outputText value=""></h:outputText>
+                <h:outputText value=""></h:outputText>
+                
+                <h:outputText value = "#{registrationController.porukaPreduzece}" style = "color:white; font-size: large"></h:outputText>
+        </h:panelGrid>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="bottom">   
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+        <h:outputText value="Hvala sto koristite nase usluge!" style="float:right; color: white; font-size: large"></h:outputText>
+        <br/>
+        <br/>
+    </ui:define>
+</ui:composition>

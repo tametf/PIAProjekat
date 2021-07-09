@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2020, 10:56:56 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="beans.Korisnik" table="korisnik" catalog="projekat" optimistic-lock="version">
+        <id name="korisnickoIme" type="string">
+            <column name="korisnickoIme" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="lozinka" type="string">
+            <column name="lozinka" length="45" not-null="true" />
+        </property>
+        <property name="tip" type="string">
+            <column name="tip" length="45" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <one-to-one name="poljoprivrednik" class="beans.Poljoprivrednik"></one-to-one>
+        <one-to-one name="preduzece" class="beans.Preduzece"></one-to-one>
+    </class>
+</hibernate-mapping>

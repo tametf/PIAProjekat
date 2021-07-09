@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templates/glavni.xhtml">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <ui:define name="top">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                       
+                    <h:commandButton value = "Nazad" action="sadnice" style="float: right"></h:commandButton>
+                    <br/>
+                    <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                <p:panel>
+                    <h:outputText value="Naziv sadnice: " style="font-size: large "></h:outputText>
+                    <h:outputText value="#{rasadnikController.trenutnaSadnica.nazivSadnice}" style="color:red; font-size: large; font-weight: bold"></h:outputText>
+                 <br/>
+                   <h:outputText value="Naziv proizvodjaca: " style="font-size: large "></h:outputText>
+                   <h:outputText value="#{rasadnikController.trenutnaSadnica.nazivProizvodjaca}" style="color:red; font-size: large; font-weight: bold"></h:outputText>
+                      
+                 <br/>
+                    <h:outputText value="Napredovanje: " style="font-size: large "></h:outputText>
+                    <p:progressBar value="#{rasadnikController.trenutnaSadnica.sadnica.napredovanje}"></p:progressBar>           
+                 </p:panel>
+                </h:form>
+                 <h:form>
+                    <h:outputText value="#{rasadnikController.rasadnikTrenutni.kriticno}" style="text-align: right"></h:outputText>
+                </h:form>
+            </ui:define>
+            <ui:define name="bottom">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; float:right; font-weight: bold"></h:outputText>
+              <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

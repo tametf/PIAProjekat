@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templates/glavni.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+        <ui:define name="top">
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <h3>
+                <h:outputText value="DOBRODOSLI U NAS ONLAJN RASADNIK" style="margin-left: 40%; font-size:large"></h:outputText>             
+            </h3>
+        </ui:define>
+        
+        <ui:define name="left">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+            
+        </ui:define>
+        <ui:define name="content">
+            <div style="background-image: url(sargarepa.jpg); image-resolution: from-image;  width: 100%; height: 100%; margin-top: 0%; background-size: cover; background-repeat: no-repeat">
+            </div>
+ 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h3 style="margin-left: 40%; font-size:large; font-weight: bold; color: white; margin-top: -30%">PRIJAVITE SE</h3>
+        <h:form>
+           
+            <h:panelGrid columns="3" style="margin-left: 40%; color: white; font-weight: bold;">
+            <p:outputLabel value="Korisnicko ime:" style="font-size:large; color: white;"></p:outputLabel>
+                <p:inputText value = "#{loginController.korisnickoIme}"></p:inputText>
+                <p:outputLabel value="#{loginController.porukaKorisnickoIme}" style="font-size:large; color: white;"></p:outputLabel>
+            
+                <p:outputLabel value="Lozinka:" style="font-size:large; color: white;"></p:outputLabel>                
+                <p:password value = "#{loginController.lozinka}"></p:password>
+                
+                <p:outputLabel value="#{loginController.porukaLozinka}" style="font-size:large; color: white;"></p:outputLabel>
+            </h:panelGrid>   
+            <h:commandButton style="color: green; margin-left: 40%; font-size: large" value="Uloguj se" action="#{loginController.login()}"></h:commandButton>
+            <h:outputText value="#{loginController.poruka}" style="color: white; font-size: large; font-weight: bold"></h:outputText><br/>
+            <h:commandButton style="color: green; margin-left: 40%; font-size: large" value="Nazad" action="index"></h:commandButton>
+  
+           <br/>
+            </h:form>
+    </ui:define>
+
+        <ui:define name="bottom">
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputText value="Hvala sto koristite nase usluge" style="color: white; font-weight: bold; font-size: large; float: right"></h:outputText>
+        <br/>
+        <br/>
+        </ui:define>
+</ui:composition>

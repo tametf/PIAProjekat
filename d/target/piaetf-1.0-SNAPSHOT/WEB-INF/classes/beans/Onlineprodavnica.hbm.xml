@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2020, 10:56:56 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="projekat" name="beans.Onlineprodavnica" optimistic-lock="version" table="onlineprodavnica">
+    <id name="idProdavnice" type="java.lang.Integer">
+      <column name="idProdavnice"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="beans.Preduzece" fetch="select" name="preduzece">
+      <column length="45" name="korisnickoImePred" not-null="true"/>
+    </many-to-one>
+    <property name="naziv" type="string">
+      <column length="45" name="naziv" not-null="true"/>
+    </property>
+    <property name="kolicina" type="string">
+      <column length="45" name="kolicina" not-null="true"/>
+    </property>
+    <property name="tip" type="string">
+      <column length="45" name="tip" not-null="true"/>
+    </property>
+    <property name="uputstvo" type="java.lang.Integer">
+      <column name="uputstvo"/>
+    </property>
+    <property name="jedinicnaCena" type="int">
+      <column name="jedinicnaCena" not-null="true"/>
+    </property>
+    <property name="srednjaOcena" type="big_decimal">
+      <column name="srednjaOcena" not-null="true" precision="5"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detaljis" table="detalji">
+      <key>
+        <column name="idProdavnice" not-null="true"/>
+      </key>
+      <one-to-many class="beans.Detalji"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="stavkas" table="stavka">
+      <key>
+        <column name="idProdavnice" not-null="true"/>
+      </key>
+      <one-to-many class="beans.Stavka"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="magacins" table="magacin">
+      <key>
+        <column name="idProdavnice" not-null="true"/>
+      </key>
+      <one-to-many class="beans.Magacin"/>
+    </set>
+    <property name="idProizvoda" type="int">
+      <column name="idProizvoda" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

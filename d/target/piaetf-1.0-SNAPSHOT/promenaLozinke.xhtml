@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="./templates/glavni.xhtml">
+
+
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               
+            <ui:define name="top">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                     <h:commandButton value="Odjava" action="#{loginController.odjava()}" style="float: right"></h:commandButton>
+                     <h:commandButton value="Nazad" action="#{rasadnikController.nazadSaPromeneLozinke()}" style="float: right"></h:commandButton>
+                     <br/>
+                     <br/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+              <img src="slika2.jpg" width="90%"></img>
+            </ui:define>
+
+            <ui:define name="content">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <h:form>
+                    <h3 style="color:white">Promena lozinke</h3>
+                    <h:panelGrid columns="3">
+                        <h:outputText value="Unesite staru lozinku:" style="color:white"></h:outputText>
+                        <h:inputSecret id = "staraLozinka" value = "#{loginController.staraLozinka}" required="true" requiredMessage="Morate uneti staru lozinku" validatorMessage="Morate uneti ispravno staru lozinku">
+                        <f:validateRegex pattern = "^((?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,})$"></f:validateRegex>
+                        </h:inputSecret>
+                        <h:message for = "staraLozinka" style = "color:white"></h:message>
+                        <h:outputText value="Unesite novu lozinku:" style="color:white"></h:outputText>
+                        <h:inputSecret id = "novaLozinka" value = "#{loginController.novaLozinka}" required="true" requiredMessage="Morate uneti novu lozinku" validatorMessage="Morate poštovati format lozinke">
+                        <f:validateRegex pattern = "^((?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,})$"></f:validateRegex>
+                        </h:inputSecret>
+                        <h:message for = "novaLozinka" style = "color:white"></h:message>
+                        <h:outputText value="Potvrdite novu lozinku:" style="color:white"></h:outputText>
+                        <h:inputSecret id = "potvrdaNoveLozinke" value = "#{loginController.potvrdaNoveLozinke}" required="true" requiredMessage="Morate potvrditi novu lozinku"></h:inputSecret>
+                        <h:message for = "potvrdaNoveLozinke" style = "color:white"></h:message>
+                    </h:panelGrid>
+                    
+                    <h:commandButton value="Potvrdi" action="#{loginController.azurirajPromenu()}"></h:commandButton>
+                    
+                    <h:outputText value="#{loginController.porukaPromena}" style="color: white"></h:outputText>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+               <h:outputText value="Hvala sto koristite nase usluge!!!" style="color: white; float:right; font-weight: bold"></h:outputText>
+              <br/>
+            </ui:define>
+
+        </ui:composition>
